@@ -1,4 +1,5 @@
 mod challenge;
+mod year2015;
 mod year2024;
 
 use anyhow::Result;
@@ -17,11 +18,20 @@ fn main() -> Result<()> {
     }
 
     let year = match args.len() {
-        3 => args[2].parse::<u16>().unwrap_or_else(|_| print_help(1)),
+        3 => args[1]
+            .trim()
+            .parse::<u16>()
+            .unwrap_or_else(|_| print_help(1)),
         _ => DEFAULT_YEAR,
     };
 
-    let day = args[1].parse::<u8>().unwrap_or_else(|_| print_help(1));
+    let day = match args.len() {
+        3 => args[2].clone(),
+        _ => args[1].clone(),
+    }
+    .trim()
+    .parse::<u8>()
+    .unwrap_or_else(|_| print_help(1));
 
     run(year, day)
 }
@@ -38,6 +48,7 @@ fn print_help(exit_code: i32) -> ! {
 pub fn run(year: u16, day: u8) -> Result<()> {
     let finder = match year {
         2024 => year2024::find_challenge,
+        2015 => year2015::find_challenge,
         _ => return Err(anyhow::anyhow!("Year {} is implemented", year)),
     };
 
