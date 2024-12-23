@@ -113,7 +113,6 @@ impl Challenge for Day19 {
 
         for towel in towels.wanted {
             let i = mutations(&towels.available, towel, &mut cache);
-            println!("{}: {}", towel, i);
             result += i;
         }
 

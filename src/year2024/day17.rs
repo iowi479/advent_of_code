@@ -201,8 +201,6 @@ impl Computer {
             self.registers[0] = a;
             self.execute();
 
-            println!("{}: {:?}", a, self.output);
-
             if self.output == self.expected {
                 solutions.insert(a);
                 continue;
@@ -236,7 +234,6 @@ impl Challenge for Day17 {
     fn part1(&self, input: &str) -> Result<String> {
         let mut computer = parse_input(input);
         computer.execute();
-        println!("{:?}", computer);
         Ok(computer
             .output
             .iter()
