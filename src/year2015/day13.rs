@@ -28,10 +28,10 @@ fn parse_input(input: &str) -> (Vec<&str>, Scores) {
             names.push(person2);
         }
 
-        let score = parts[3].parse::<i64>().unwrap();
-        let score = if parts[2] == "lose" { -score } else { score };
-        let p1 = names.iter().position(|p| p == &person1).unwrap();
-        let p2 = names.iter().position(|p| p == &person2).unwrap();
+        let mut score = parts[3].parse::<i64>().unwrap();
+        score = if parts[2] == "lose" { -score } else { score };
+        let p1 = names.iter().position(|p| *p == person1).unwrap();
+        let p2 = names.iter().position(|p| *p == person2).unwrap();
 
         *scores.entry((p1, p2)).or_insert(0) += score;
         *scores.entry((p2, p1)).or_insert(0) += score;
