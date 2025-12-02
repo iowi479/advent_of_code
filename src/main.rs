@@ -10,12 +10,12 @@ const DEFAULT_YEAR: u16 = 2025;
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().collect();
 
-    if args[1] == "--help" || args[1] == "-h" || args[1] == "help" {
-        print_help(0);
-    }
-
     if args.len() < 2 || args.len() > 3 {
         print_help(1);
+    }
+
+    if args[1] == "--help" || args[1] == "-h" || args[1] == "help" {
+        print_help(0);
     }
 
     let year = match args.len() {
@@ -102,7 +102,9 @@ pub fn run(year: u16, day: u8) -> Result<()> {
         println!("Part 2: {}", part2);
 
         return Ok(());
-    } else {
+    } else if std::fs::exists(&(base_path.clone() + "_1"))?
+        && std::fs::exists(&(base_path.clone() + "_2"))?
+    {
         let input1 = std::fs::read_to_string(base_path.clone() + "_1")?;
         let part1 = challenge.part1(&input1)?;
         println!("Part 1: {}", part1);
@@ -112,5 +114,11 @@ pub fn run(year: u16, day: u8) -> Result<()> {
         println!("Part 2: {}", part2);
 
         return Ok(());
+    } else {
+        return Err(anyhow::anyhow!(
+            "Input file(s) for year {} day {} not found",
+            year,
+            day
+        ));
     }
 }
