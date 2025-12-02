@@ -26,7 +26,7 @@ struct Command<'a> {
     wire: &'a str,
 }
 
-fn parse_input(input: &str) -> VecDeque<Command> {
+fn parse_input(input: &str) -> VecDeque<Command<'_>> {
     input
         .lines()
         .map(|line| line.split_once(" -> ").unwrap())

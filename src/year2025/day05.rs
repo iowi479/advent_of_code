@@ -1,6 +1,5 @@
 use crate::challenge::Challenge;
 use anyhow::Result;
-use std::collections::HashMap;
 
 pub struct Day05 {}
 

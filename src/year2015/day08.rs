@@ -14,7 +14,7 @@ struct Literal<'a> {
     chars: usize,
 }
 
-fn parse_input(input: &str) -> Vec<Literal> {
+fn parse_input(input: &str) -> Vec<Literal<'_>> {
     input
         .lines()
         .map(|line| Literal {

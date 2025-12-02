@@ -19,7 +19,7 @@ enum Instruction<'a> {
 
 type Wires<'a> = std::collections::HashMap<&'a str, bool>;
 
-fn input_parse(input: &str) -> (VecDeque<Instruction>, Wires) {
+fn input_parse(input: &str) -> (VecDeque<Instruction<'_>>, Wires<'_>) {
     let (init, ins) = input.split_once("\n\n").unwrap();
 
     let wires = init

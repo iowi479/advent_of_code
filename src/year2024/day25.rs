@@ -1,5 +1,5 @@
 use crate::challenge::Challenge;
-use anyhow::{anyhow, Result};
+use anyhow::Result;
 
 pub struct Day25 {}
 

@@ -1,6 +1,5 @@
 use crate::challenge::Challenge;
-use anyhow::{anyhow, Result};
-use std::collections::HashSet;
+use anyhow::Result;
 
 pub struct Day06 {}
 

@@ -15,7 +15,7 @@ struct Towels<'a> {
     wanted: Vec<&'a str>,
 }
 
-fn parse_input(input: &str) -> Towels {
+fn parse_input(input: &str) -> Towels<'_> {
     let mut parts = input.split("\n\n");
     let mut available = parts.next().unwrap().split(", ").collect::<Vec<&str>>();
     let mut wanted = Vec::new();
