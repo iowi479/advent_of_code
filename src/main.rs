@@ -1,10 +1,11 @@
 mod challenge;
 mod year2015;
 mod year2024;
+mod year2025;
 
 use anyhow::Result;
 
-const DEFAULT_YEAR: u16 = 2024;
+const DEFAULT_YEAR: u16 = 2025;
 
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().collect();
@@ -47,6 +48,7 @@ fn print_help(exit_code: i32) -> ! {
 /// Run the challenge for the given day.
 pub fn run(year: u16, day: u8) -> Result<()> {
     let finder = match year {
+        2025 => year2025::find_challenge,
         2024 => year2024::find_challenge,
         2015 => year2015::find_challenge,
         _ => return Err(anyhow::anyhow!("Year {} is implemented", year)),
