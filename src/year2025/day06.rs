@@ -1,5 +1,4 @@
 use crate::challenge::Challenge;
-use anyhow::Result;
 
 pub struct Day06 {}
 
@@ -9,12 +8,4 @@ impl Day06 {
     }
 }
 
-impl Challenge for Day06 {
-    fn part1(&self, input: &str) -> Result<String> {
-        todo!("Not implemented yet")
-    }
-
-    fn part2(&self, input: &str) -> Result<String> {
-        todo!("Not implemented yet")
-    }
-}
+impl Challenge for Day06 {}
