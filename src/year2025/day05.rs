@@ -67,7 +67,7 @@ impl Challenge for Day05 {
         for (from, to) in fresh_ranges {
             let mut inserted = false;
             for i in 0..ranges.len() {
-                let (rfrom, rto) = ranges[i];
+                let (rfrom, _) = ranges[i];
                 if from <= rfrom {
                     inserted = true;
                     ranges.insert(i, (from, to));
